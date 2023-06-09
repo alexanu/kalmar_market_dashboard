@@ -2,6 +2,12 @@
 API_KEY_PAPER = "PKATHWB5JG3YZKET2LGO"
 API_SECRET_PAPER = "nq6O0Xjf5LCrIsPxlWbRg5pqRIiAMFp5QbBAz3Xg"
 
+"""
+For the azure web app:
+az webapp config appsettings set -g $RESOURCE_GROUP_NAME -n $APP_SERVICE_NAME --settings API_KEY_PAPER=PKATHWB5JG3YZKET2LGO
+az webapp config appsettings set -g $RESOURCE_GROUP_NAME -n $APP_SERVICE_NAME --settings API_SECRET_PAPER=nq6O0Xjf5LCrIsPxlWbRg5pqRIiAMFp5QbBAz3Xg
+"""
+
 API_BASE_URL_PAPER = "https://paper-api.alpaca.markets"
 API_BASE_URL_REAL = "https://api.alpaca.markets"
 API_DATA_URL = 'wss://data.alpaca.markets'

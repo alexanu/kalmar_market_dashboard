@@ -14,6 +14,47 @@ Spiders = [
     'XLV', # Healthcare
 ]   
 
+Curr_dict = {
+    'UUP':'long USD &<Br>short others',
+    'FXE':'EUR/USD',
+    'FXF':'CHF/USD',
+    'FXY':'JPY/USD',
+    'FXB':'GBP/USD',
+    'CYB':'CHY/USD'
+}
+
+Country_equity = {
+    'EWA':'Australia',
+    'EWZ':'Brazil',
+    'FXI':'China',
+    'EWQ':'France',
+    'EWG':'Germany',
+    'INDA':'India',
+    'EWJ':'Japan',
+    'EWU':'UK',
+}
+
+Bonds_dict = {
+    'BIL':['1 US Gov UST','Gov'],
+    'IEF':['2 US Gov ST','Gov'],
+    'FXF':['3 US Gov MT','Gov'],
+    'TLT':['4 US Gov LT','Gov'],
+
+    'TiP':['5 US Gov TIPS','Gov'],
+
+    'VCSH':['6 US IG ST Fixed','IG'],
+    'FLOT':['7 US IG ST Float','IG'],
+    'IGIB':['8 US IG MT','IG'],
+    # 'XXXXXXX':'US IG LT',
+
+    'USHY':['9 US HY All','HY'],
+    'ANGL':['10 US Fallen Angels','HY'],
+    'SHYG':['11 US HY ST','HY'],
+    'HYLS':['12 US HY Long/Short','HY']
+}
+
+
+
 SP500_memb_2011_2021_RIC = ['SNI.OQ^C18', 'ZBH.N', 'SRE.N', 'KTB.N', 'TWTR.N', 'CSCO.OQ', 'ETSY.OQ', 'JNJ.N', 'DTM.N', 'MO.N', 
                         'XYL.N', 'RAI.N^G17', 'CBE.N^L12', 'HON.OQ', 'STZ.N', 'SPLS.OQ^I17', 'LM.N^H20', 'CE.N', 'PLD.N', 'MLM.N', 'TSN.N', 
                         'SUNE.N^D16', 'CMCSA.OQ', 'DXC.N', 'IRM.N', 'TWC.N^E16', 'LW.N', 'HSY.N', 'JWN.N', 'CPGX.N^G16', 'IPGP.OQ', 'ES.N', 

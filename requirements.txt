@@ -2,3 +2,4 @@ alpaca-py
 pandas
 dash
 dash_bootstrap_components
+PyGithub
