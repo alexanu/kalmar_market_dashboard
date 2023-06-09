@@ -1,6 +1,10 @@
 # Alpaca Market Dashboard hosted on Azure Web App
 The dashboard is created with Dash
 
+Data sources: Alpaca and FMP
+
+To run locally: open folder in terminal => `python app.py`
+
 ## Creating variables
 Using CMD
 
@@ -64,7 +68,7 @@ The link for the above command is taken from the json respond to the previous co
 
 
 
-az storage blob list --account-name $STORAGE_NAME --container-name $CONTAINER_NAME --output table --auth-mode login
+`az storage blob list --account-name $STORAGE_NAME --container-name $CONTAINER_NAME --output table --auth-mode login`
 
 
 # Git
@@ -88,3 +92,13 @@ az storage blob list --account-name $STORAGE_NAME --container-name $CONTAINER_NA
 ## Update local content from Github: 
 
     git pull origin main
+
+# Conda Virtual Environments for Windows:
+
+    conda env list 
+    conda create -n alpaca_env 
+    conda install -n alpaca_env python #### or: conda install pip
+    conda activate alpaca_env
+    pip install -r requirements.txt
+    conda deactivate
+    conda env remove -n alpaca_env
