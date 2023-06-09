@@ -42,13 +42,11 @@ from alpaca.data import StockHistoricalDataClient
 from alpaca.broker.client import BrokerClient
 
 
-#API_KEY_PAPER = os.getenv('API_KEY_PAPER')
-#API_SECRET_PAPER = os.getenv('API_SECRET_PAPER')
-from Alpaca_config import *
-
-trading_client = TradingClient(API_KEY_PAPER, API_SECRET_PAPER) # dir(trading_client)
-stock_client = StockHistoricalDataClient(API_KEY_PAPER,API_SECRET_PAPER)
-broker_client = BrokerClient(API_KEY_PAPER,API_SECRET_PAPER,sandbox=False,api_version="v2")
+#ALPACA_API_KEY_PAPER = os.getenv('API_KEY_PAPER')
+#ALPACA_API_SECRET_PAPER = os.getenv('API_SECRET_PAPER')
+trading_client = TradingClient(ALPACA_API_KEY_PAPER, ALPACA_API_SECRET_PAPER) # dir(trading_client)
+stock_client = StockHistoricalDataClient(ALPACA_API_KEY_PAPER, ALPACA_API_SECRET_PAPER)
+broker_client = BrokerClient(ALPACA_API_KEY_PAPER, ALPACA_API_SECRET_PAPER,sandbox=False,api_version="v2")
 
 
 # Depending when the app is run, different dates should be used --------------------------------------------
