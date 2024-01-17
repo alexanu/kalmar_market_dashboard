@@ -1,0 +1,8 @@
+Date;Idea;Description;Source;Symbols
+2023-06-03;postIPO;Largest US IPOs over the first years for each stock, weighted by market cap. LPX buys after 6 days of trading and sells after 3-4 years. IPO buys in first 90 days and sells after 2 years.;ETFDB;FPX, IPO
+2023-06-03;BTFD;Idea: stocks with relatively poor weekly performance tend to reverse and earn higher returns relative to peer stocks in the week that follows.;ETFDB;DIP, UTRN
+2023-06-03;Corporate Events;ETFs in scope track companies, that have announced or expected to announce big corporate events. ACTV tracks 13D-filings. EVNT has long-short strategy.;ETFDB;OAIE, EVNT, ACTV
+2023-06-03;Senators;Tracks the stocks, which US congress members Congress and/or their families also have reported to have invested in through public disclosure filings.;Twitter;KRUZ, NANC
+2023-06-03;Sector Rotation;Sector rotation strategy is often executed via ETFs for specific sector;ETFDB;XLSR, SZNE, SSUS, AESR
+2023-06-03;Bottom-up Large US;Bottom-up selection using different methods in order to beat SPY;ETFDB;AVLV, DUSA, GSPY, LCG
+2023-07-13;Equal Weighted;Comparison of SPY vs the biggest S&P500 equally weighted ETF;ETFDB;RSP

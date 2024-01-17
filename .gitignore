@@ -1,8 +1,8 @@
 Azure_config.py
 Alpaca_config.py
+steps.txt
 *.docx
-*.xlsx
-*.csv
+*.drawio
 
 
 venv/

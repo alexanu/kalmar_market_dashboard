@@ -9,11 +9,11 @@ To run locally: open folder in terminal => `python app.py`
 Using CMD
 
      set AZ_LOCATION='eastus'
-     set AZ_RESOURCE_GROUP_NAME='Alpaca'
+     set AZ_RESOURCE_GROUP_NAME='XXXXX'
      set APP_SERVICE_PLAN_NAME='XXXXXXXXXXX'
      set PLAN='B1'
      set RUNTIME='PYTHON:3.9'
-     set APP_SERVICE_NAME='Alpaca-Market-Dashboard'
+     set APP_SERVICE_NAME='XXXXXX'
 
 ## Quickly deploy Dash file as Azure Web App
      az login
@@ -23,42 +23,6 @@ Using CMD
           --resource-group $RESOURCE_GROUP_NAME 
           --sku $PLAN
 Set the appsettings for the API key (the command is in .gitignore file)
-
-## Long way via git
-### Prep
-     az webapp deployment user set 
-          --user-name K... 
-          --password T..1_
-     git init -b main
-     git add .
-     git commit -m "First Commit"
-
-
-### Azure Web App creation
-     az webapp create 
-          --resource-group $RESOURCE_GROUP_NAME 
-          --plan $APP_SERVICE_PLAN_NAME 
-          --name $APP_SERVICE_NAME 
-          --runtime $RUNTIME 
-          --deployment-local-git
-
-### Create Azure git
-     az webapp config appsettings set 
-          --name $APP_SERVICE_NAME 
-          --resource-group $RESOURCE_GROUP_NAME 
-          --settings DEPLOYMENT_BRANCH='main'
-     git remote add azure https://<user>@<app name>.scm.azurewebsites.net/<app name>.git
-The link for the above command is taken from the json respond to the previous command ("deploymentLocalGitUrl")
-     
-     git push azure main
-
-### If the URL of azure git changed:
-     git remote -v
-     git remote remove azure
-
-### After updating the app:
-     git commit -am "updated output"
-     git push azure main
 
 
 # Help commands for Azure CLI

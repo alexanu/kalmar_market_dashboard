@@ -20,7 +20,7 @@ dash_app = dash.Dash(
                 'content': 'width=device-width, initial-scale=1.0'}],
     use_pages=True    
                 )
-dash_app.title = "Alpaca Market Dashboard" # this puts text to the browser tab
+dash_app.title = "Vilni Market Dashboard" # this puts text to the browser tab
 
 
 dash_app.layout = dcc.Loading(  # <- Wrap App with Loading Component

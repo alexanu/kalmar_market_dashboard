@@ -34,26 +34,37 @@ Country_equity = {
     'EWU':'UK',
 }
 
-Bonds_dict = {
-    'BIL':['1 US Gov UST','Gov'],
-    'IEF':['2 US Gov ST','Gov'],
-    'FXF':['3 US Gov MT','Gov'],
-    'TLT':['4 US Gov LT','Gov'],
-
-    'TiP':['5 US Gov TIPS','Gov'],
-
-    'VCSH':['6 US IG ST Fixed','IG'],
-    'FLOT':['7 US IG ST Float','IG'],
-    'IGIB':['8 US IG MT','IG'],
-    # 'XXXXXXX':'US IG LT',
-
-    'USHY':['9 US HY All','HY'],
-    'ANGL':['10 US Fallen Angels','HY'],
-    'SHYG':['11 US HY ST','HY'],
-    'HYLS':['12 US HY Long/Short','HY']
+Real_Estate_ETF = {
+    'VNQ':'RE US',
+    'VNQI':'RE Not-US',
+    'REM':'Mortgage REIT US',
+    'SRVR':'Datacenters US',
+    'INDS':'Industrial RE US',
+    'DCMB':'Commercial RE US',
+    'HOMZ':'Residential RE US',
+    'RECS':'RE Bonds US',
+    'MBB': 'Mortg-Backed Secs',
+    'CMBS': 'Comm Mortg-Backed Secs',
 }
 
+Bonds_dict = {
+    'BIL':['US Gov UST',1],
+    'IEF':['US Gov ST',2],
+    'FXF':['US Gov MT',3],
+    'TLT':['US Gov LT',4],
 
+    'TiP':['US Gov TIPS',5],
+
+    'VCSH':['US IG ST Fixed',6],
+    'FLOT':['US IG ST Float',7],
+    'IGIB':['US IG MT',8],
+    # 'XXXXXXX':'US IG LT',
+
+    'USHY':['US HY All',9],
+    'ANGL':['US Fallen Angels',10],
+    'SHYG':['US HY ST',11],
+    'HYLS':['US HY Long/Short',12]
+}
 
 SP500_memb_2011_2021_RIC = ['SNI.OQ^C18', 'ZBH.N', 'SRE.N', 'KTB.N', 'TWTR.N', 'CSCO.OQ', 'ETSY.OQ', 'JNJ.N', 'DTM.N', 'MO.N', 
                         'XYL.N', 'RAI.N^G17', 'CBE.N^L12', 'HON.OQ', 'STZ.N', 'SPLS.OQ^I17', 'LM.N^H20', 'CE.N', 'PLD.N', 'MLM.N', 'TSN.N', 
@@ -183,3 +194,4 @@ TOP10_US_SECTOR = ['FLIR', 'DXC', 'JNPR', 'IPGP', 'JKHY', 'SEDG', 'NLOK', 'FFIV'
                     'HII', 'NLSN', 'RHI', 'PNR', 'AOS', 'ALLE', 'SNA', 'CHRW', 'AAL', 'APA', 'CF', 'MOS', 
                     'FMC', 'EMN', 'ALB', 'CE', 'MLM', 'VMC', 'NUE', 'FRT', 'VNO', 'KIM', 'REG', 'IRM', 
                     'HST', 'UDR', 'BXP', 'DRE', 'MAA']
+
