@@ -119,34 +119,19 @@ earnings_df = pd.merge(earnings_df, selected_columns, how='inner', on='symbol')
 
 # Market Time Block -----------------------------------------------------------------------------------------------
 
-clock = trading_client.get_clock()
-today = clock.timestamp
-previous_day = today - pd.Timedelta('1D')
 
-if not clock.is_open:
-    time_to_open = (clock.next_open - clock.timestamp).total_seconds()//3600
-else:
-    time_to_close = (clock.timestamp - clock.next_close).total_seconds()//3600
-
-now = pd.Timestamp.today() + pd.offsets.Day(-1) # we need -1 for yesterday as we need know when last close of market happened
-MonthEnds = (now + pd.offsets.MonthEnd(normalize=True)).strftime("%Y-%m-%d")
-QuarterEnds = (now + pd.offsets.QuarterEnd(normalize=True)).strftime("%Y-%m-%d")
-tradingcal_till_moe = trading_client.get_calendar(GetCalendarRequest(start=now.strftime("%Y-%m-%d"), end=MonthEnds))
-tradingcal_till_qe = trading_client.get_calendar(GetCalendarRequest(start=now.strftime("%Y-%m-%d"), end=QuarterEnds))
+status = utils.check_trading_day()
 
 text0 = f'{pd.Timestamp.now(tz="EST").tz_localize(None).strftime("%H:%M")} ET'
 text1 = f'Today is {pd.Timestamp.today().day_name()}, {pd.Timestamp.now(tz="CET").tz_localize(None).strftime("%b %d, %H:%M") } in Munich, which is {pd.Timestamp.now(tz="EST").tz_localize(None).strftime("%H:%M")} in New York'
-if not clock.is_open:
-    time_to_open = round((clock.next_open - clock.timestamp).total_seconds()/3600,1)
-    already_closed_hours = round((dt.datetime.now()- tradingcal_till_moe[0].close).total_seconds() / 3600,1)
+if status['market_status'] == 'closed':
     text2 = 'Closed'
-    text3 = f'US market is currently closed for already {already_closed_hours} hours. Will open in {time_to_open} hours'
+    text3 = f"US market is currently closed for already {round(status['time_since_market_close']/60,1)} hours. Will open in {round(status['time_till_market_open'],1)} hours"
 else:
-    time_to_close = round((clock.timestamp - clock.next_close).total_seconds()/3600,1)
     text2 = 'Open'
-    text3 = f'US market is currently open. Will close in {time_to_close} hours'
+    text3 = f"US market is open already for {round(status['time_since_market_open'],1) }. Will close in {round(status['time_till_market_close'],1)} hours"
 
-text4 = f'There are {len(tradingcal_till_moe)-1} trading days till the month end and {len(tradingcal_till_qe)-1} - till end of quarter'
+text4 = f"Today day is {status['trading_day']}. There are {status['trading_days_future']} trading days till the month end."
 
 
 blockMarketTime = dbc.Row( # Time of market
@@ -157,7 +142,7 @@ blockMarketTime = dbc.Row( # Time of market
                                     dbc.Col([html.H3(id="lbl_status",children = text2),html.P(children=text3)]), # Open / Closed
                                 ]),    
                                 dbc.Row([
-                                    dbc.Col([html.H3(id="lbl_eom",children = len(tradingcal_till_moe)-1),html.P(children=text4)]), # Days till eom
+                                    dbc.Col([html.H3(id="lbl_eom",children = status['trading_days_future']),html.P(children=text4)]), # Days till eom
                                     dbc.Col([html.H3(id="lbl_test",children = f'{today_macro}+{today_earnings}'),
                                              html.P(children=f"Today we have {today_macro} macro events and {today_earnings} earnings pres in US")
                                             ]),

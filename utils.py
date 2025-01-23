@@ -571,3 +571,52 @@ def get_bond_data(years=1, bond_list = Bonds10):
     returns_df['chg30']=returns_df['chg30']-returns_df['chg5']
     print('Done with Riksbank')
     return returns_df
+
+
+
+def check_trading_day():
+
+    result = {
+        "market_status": "closed",
+        "trading_day": "normal",
+        "time_since_market_close": None,
+        "time_till_market_open": None,
+        "time_since_market_open": None,
+        "time_till_market_close": None,
+        "trading_days_past": None,
+        "trading_days_future": None,
+        
+    }
+
+    clock = trading_client.get_clock()
+    current_time = clock.timestamp
+    current_date = current_time.date()
+
+    if clock.is_open:
+        result["market_status"] = "open"
+        open_time = current_time.replace(hour=9, minute=30, second=0, microsecond=0)
+        result["time_since_market_open"] = round((current_time - open_time).total_seconds() / 60,1)
+        result["time_till_market_close"] = round((clock.next_close - current_time).total_seconds() / 60,1)
+    else:
+        calendar = trading_client.get_calendar(GetCalendarRequest(start=(current_date + pd.DateOffset(days=-5)), end=current_date))   
+        result["time_since_market_close"] = round((current_time.replace(tzinfo=None) - calendar[-1].close).total_seconds() / 60,1) # calendar[-1] - latest trading day: today or earlier
+        result["time_till_market_open"] = round((clock.next_open - current_time).total_seconds() / 60,1)
+
+
+    first_of_month = current_date.replace(day=1)
+    last_of_month = (current_date.replace(day=1) + pd.DateOffset(months=1)+pd.DateOffset(days=-1))
+    calendar = trading_client.get_calendar(GetCalendarRequest(start=first_of_month, end=last_of_month))
+    trading_days = [day.date for day in calendar]
+    if current_date not in trading_days: # if today is not in trading days, ...
+        result["trading_day"] = "off" # ... today is not a trading day
+    elif calendar[0].date == current_date: # first trading day in month
+        result["trading_day"] = "first"
+    elif calendar[-1].date == current_date: # last trading day in month
+        result["trading_day"] = "last"
+
+    trading_days_future = len([day for day in trading_days if day > current_date])
+    trading_days_past = len([day for day in trading_days if day < current_date])
+    result["trading_days_past"] = trading_days_past
+    result["trading_days_future"] = trading_days_future
+
+    return result
